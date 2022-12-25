@@ -25,7 +25,14 @@ class IklanSeeder extends Seeder
                 'alamat' => 'Jalan Nanas No.3, Kebon Jeruk, Jakarta Barat',
                 'durasi' => 'Part-time',
                 'shortdesc' => 'Dibutuhkan Full-stack web developer dengan minimal 2 tahun pengalaman. Gaji akan dibayarkan diakhir proyek',
-                'is_available' => true
+                'is_available' => true,
+                'jobdesc' => 'Mendesain website yang cepat dan responsif untuk kebutuhan pemesanan.
+                Mengatur data pemesan dan segala sesuatu yang berkaitan dengan back-end development.
+                Memiliki pengetahuan dan mengikuti trend di bidang perkulineran.
+                Dua Tahun Berpenngalaman sebagai full-stack web developer.
+                Menguasai berbagai framework back-end dan front-end.
+                Mampu bekerja sama dalam tim.
+                Bisa kerja secara remote.'
             ],
             [
                 'id_umkm' => 2,
@@ -37,7 +44,13 @@ class IklanSeeder extends Seeder
                 'alamat' => 'Jalan Riau No.5B, Mekarwangi, Bandung',
                 'durasi' => 'Full-time',
                 'shortdesc' => 'Dibutuhkan tenaga ekstra penjahit, minimal sudah pernah bekerja sebagai penjahit sebelumnya, atau aktif menjahit',
-                'is_available' => true
+                'is_available' => true,
+                'jobdesc' => 'Menjahit sesuai dengan pesanan dan juga model yang sudah disiapkan.
+                Memiliki sentuhan artistik dan juga mengikuti trend di bidang fashion dan design.
+                Menguasai teknik dasar menjahit.
+                Rela bekerja lebih dari jam kerja.
+                Mampu bekerja sama dalam tim.
+                Berdomisili di Bandung dan sekitarnya.'
             ],
             [
                 'id_umkm' => 3,
@@ -49,7 +62,11 @@ class IklanSeeder extends Seeder
                 'alamat' => 'Jalan Sedayu No.22, Kelapa Gading, Jakarta Utara',
                 'durasi' => 'Full-time',
                 'shortdesc' => 'Dibutuhkan Guru privat koding, diperuntukan untuk mengajar pemula, minimal pengalaman mengajar 2 tahun',
-                'is_available' => true
+                'is_available' => true,
+                'jobdesc' => 'Mengajar sesuai permintaan client dan mengakomodasi tujuan pembelajaran mereka.
+                Memiliki minimal dua tahun pengalaman sebagai pengajar profesional.
+                Mampu bekerja sama dengan anak kecil, remaja, dan juga orang dewasa.
+                Bisa kerja remote.'
             ],
         ]);
     }

@@ -25,6 +25,7 @@ class CreateIklanTable extends Migration
             $table->string('durasi');
             $table->string('shortdesc');
             $table->boolean('is_available');
+            $table->text('jobdesc');
             $table->timestamps();
         });
     }

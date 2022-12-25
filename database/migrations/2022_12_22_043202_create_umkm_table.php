@@ -20,7 +20,7 @@ class CreateUmkmTable extends Migration
             $table->string('logo')->default(null)->nullable();
             $table->foreignId('kategori_umkm')->constrained('kategori', 'id');
             $table->timestamps();
-        });
+    });
     }
 
     /**
