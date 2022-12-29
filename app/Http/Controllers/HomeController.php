@@ -71,4 +71,19 @@ class HomeController extends Controller
         $jobdesc_list = explode(".", $jobdesc);
         return view('guestPages.detail', ['iklan' => $iklan, 'jobdesc' => $jobdesc_list]);
     }
+    public function profile(){
+        $is_umkm = auth()->user()->is_umkm;
+        $id = auth()->user()->id;
+        if($is_umkm){
+            $umkm_detail = Umkm::where('user_id', $id)->first();
+            $all_category = Kategori::all();
+            $kategori = Kategori::where('id', $umkm_detail->kategori_umkm)->first();
+            $kategori = $kategori->nama_kategori;
+            $umkm_detail->kategori = $kategori;
+            return view('profilePages.umkmprofile', ['user' => auth()->user() , 'umkm' => $umkm_detail, 'kategori' => $all_category] );
+        }
+        else{
+            return view('profilePages.jobseekerprofile', ['user' => auth()->user()]);
+        }
+    }
 }

@@ -18,7 +18,8 @@ class AuthController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email:dns', 'unique:users'],
             'password' => ['required', 'min:6', 'max:255'],
-            'repassword' => ['same:password']
+            'repassword' => ['same:password'],
+            'phone_number' => $request->phone_num
         ],
         [
             'repassword.same' => "Pasword must match"
@@ -45,7 +46,7 @@ class AuthController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email:dns', 'unique:users'],
             'password' => ['required', 'min:6', 'max:255'],
-            'repassword' => ['same:password']
+            'repassword' => ['same:password'],
         ],
         [
             'repassword.same' => "Pasword must match"
@@ -58,7 +59,8 @@ class AuthController extends Controller
                 'email' => $validated['email'],
                 'password' => $validated['password'],
                 'is_umkm' => true,
-                'is_admin' => false
+                'is_admin' => false,
+                'phone_number' => $request->phone_num
             ]
         ]);
         $prev_id = DB::getPdo()->lastInsertId();

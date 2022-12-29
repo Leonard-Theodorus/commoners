@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex justify-center items-center min-h-full w-full mt-24">
     <form action="{{ route('login') }}" method="post" class="flex flex-col w-1/4 space-y-4">
-        <h1 class="text-sky-900 text-xl">Please Sign In</h1>
+        <h1 class="text-sky-900 text-xl">Sign In</h1>
         @csrf
         <input class="border p-4" type="email" name="email" required autofocus value="{{old ('email')}}" placeholder="Email">
         <input class="border p-4" type="password" name="password" id="floatingPassword" placeholder="Password">
