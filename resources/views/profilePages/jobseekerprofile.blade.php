@@ -120,7 +120,7 @@
                         <div class="form-check form-check-inline">
                           <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
                               checked
-                          @endif>
+                              @endif>
                           <label class="form-check-label inline-block text-gray-800" for="male">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -134,17 +134,40 @@
                       </div>
                     <h1 class="text-sky-900 text-xl my-2"> Email </h1>
                     <input type="email" class="w-full border-2 p-4 my-2 @error('email')
-                        is-invalid
+                    is-invalid
                     @enderror" name="email" value = "{{$user->email}}" >
                     @error('email')
-                        <div class="invalid-feedback text-red-500">
-                            {{$message}}
-                        </div>
+                    <div class="invalid-feedback text-red-500">
+                        {{$message}}
+                    </div>
                     @enderror
+                    <h1 class="text-sky-900 text-xl my-2"> Date Of Birth </h1>
+                    <div class="relative">
+                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <input id="dob" type="date" name="dob" value=" {{$user->dob}} "  class="@error('dob')
+                        is-invalid
+                        @enderror border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    </div>
+                    @error('dob')
+                    <div class="invalid-feedback text-red-500">
+                        {{$message}}
+                    </div>
+                    @enderror
+                    <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                    <div class="flex items-center border-2  rounded p-2 w-full my-2">
+                        <div class="text-xl mr-2">
+                            <p>+62</p>
+                        </div>
+                        <input type="tel" name="phone" id="phone" class="w-full rounded border-2">
+                        <div>
+                        </div>
+                    </div>
 
                     <h1 class="text-sky-900 text-xl my-2"> Deskripsi Singkat </h1>
                     <input type="text" name="short_desc" class="w-full border-2 p-4 my-2 @error('short_desc')
-                        is-invalid
+                    is-invalid
                     @enderror" value=" {{$user->short_desc}} ">
                     @error('short_desc')
                         <div class="invalid-feedback text-red-500">
@@ -156,7 +179,7 @@
                           <label for="cv" class="cursor-pointer">
                             Upload CV (.pdf)
                           </label>
-                          <input type="file" name="cv" id="cv" class=" bg-gray-300 form-control @error('cv') is-invalid @enderror">
+                          <input type="file" value=" {{$user->cv_file}} " name="cv" id="cv" class=" bg-gray-300 form-control @error('cv') is-invalid @enderror">
                           @error('cv')
                             <div class="invalid-feedback text-red-500">
                                 {{$message}}
@@ -183,9 +206,9 @@
                 <h1 class="text-sky-900 text-xl my-2"> Gender </h1>
                 <div class="flex justify-evenly w-1/4">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
-                          checked
-                      @endif>
+                        <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
+                        checked
+                        @endif>
                       <label class="form-check-label inline-block text-gray-800" for="male">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -195,14 +218,38 @@
                       @endif>
                       <label class="form-check-label inline-block text-gray-800" for="female">Female</label>
                     </div>
+                </div>
+                <h1 class="text-sky-900 text-xl my-2"> Date of Birth </h1>
+                <div class="flex justify-start w-1/2">
+                    <div class="border-2 rounded p-4 w-full my-2">
+                        <p class="text-xl"> {{$user->dob}} </p>
+                    </div>
+                </div>
+                <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                <div class="flex justify-start w-1/2">
+                    <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
+                        <div class="text-xl mr-2">
+                            <p>+62</p>
+                        </div>
+                        <div>
+                            <p class="text-xl ml-2"> {{$user->phone_number}} </p>
+                        </div>
+                    </div>
+                </div>
 
-                  </div>
             </div>
         </div>
         <div id="dis-1" class="flex bg-gray-100 justify-center">
             <button onclick="enableEdit()" id="editbtn"  class="w-1/4 bg-yellow-300 rounded-md mt-2 py-2 px-4 hover:font-bold">  Edit </button>
         </div>
     </div>
+    <script >
+        config = {
+            maxDate : new Date(),
+            altInput : true,
+        }
+        flatpickr("#dob", config)
+    </script>
     <script>
         function enableEdit(){
             $("#cnt1").attr("style", "display:none");

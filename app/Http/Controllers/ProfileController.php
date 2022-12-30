@@ -12,12 +12,11 @@ class ProfileController extends Controller
     public function editprofile(){
         if(request()->umkm != 1){
             $validator = Validator::make(request()->all(),[
-                'name' => ['required'],
-                'email' => ['required', 'email:dns'],
-                'short_desc' => ['required', 'max:255'],
-                'thumbnail' => ['required', 'image'],
-                'cv' => ['required', 'mimetypes:application/pdf'],
-                'gender' => ['required']
+                'email' => ['email:dns'],
+                'short_desc' => ['max:255'],
+                'thumbnail' => ['image'],
+                'cv' => ['mimetypes:application/pdf'],
+                'phone' => ['digits:10']
             ]);
             if($validator->fails()){
                 return redirect(route('profile'))->withErrors($validator)->withInput()
@@ -27,10 +26,14 @@ class ProfileController extends Controller
             $new_name = request()->name;
             $new_mail = request()->email;
             $new_desc = request()->short_desc;
+            $dob = request()->dob;
+            $phone = request()->phone;
             $user = User::where('id', $user_id)->first();
             $user->name = $new_name;
             $user->email = $new_mail;
             $user->short_desc = $new_desc;
+            $user->dob = $dob;
+            $user->phone_number = $phone;
             if(request()->file('thumbnail')){
                 $og_filename = request()->file('thumbnail')->getClientOriginalName();
                 $user->photo = request()->file('thumbnail')->storeAs('profilePictures', $og_filename);
@@ -47,23 +50,24 @@ class ProfileController extends Controller
         }
         else{
             $validator = Validator::make(request()->all(),[
-                'name' => ['required'],
-                'email' => ['required', 'email:dns'],
-                'kategori' => ['required'],
-                'short_desc' => ['required', 'max:255'],
-                'thumbnail' => ['required', 'image']
+                'email' => ['email:dns'],
+                'short_desc' => ['max:255'],
+                'thumbnail' => [ 'image'],
+                'phone' => ['digits:10']
             ]);
             if($validator->fails()){
                 return redirect(route('profile'))->withErrors($validator)->withInput()
-                ->with('update_error', 'Profile not updated, click the update button again for more detail!');
+                ->with('update_error', 'Profile not updated, click the edit button again for more detail!');
             }
             $user_id = request()->id;
             $new_name = request()->name;
             $new_mail = request()->email;
             $new_desc = request()->short_desc;
+            $phone = request()->phone;
             $user = User::where('id', $user_id)->first();
             $user->name = $new_name;
             $user->email = $new_mail;
+            $user->phone_number = $phone;
             $user->save();
 
             $umkm = Umkm::where('user_id', $user_id)->first();

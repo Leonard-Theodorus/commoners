@@ -127,6 +127,15 @@
 
                         @endforeach
                     </select>
+                    <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                    <div class="flex items-center border-2  rounded p-2 w-full my-2">
+                        <div class="text-xl mr-2">
+                            <p>+62</p>
+                        </div>
+                        <input type="tel" name="phone" id="phone" class="w-full rounded border-2">
+                        <div>
+                        </div>
+                    </div>
                     <h1 class="text-sky-900 text-xl my-2"> Deskripsi Singkat </h1>
                     <input type="text" name="short_desc" class="w-full border-2 p-4 my-2 @error('short_desc')
                         is-invalid
@@ -150,6 +159,17 @@
                 <h1 class="text-sky-900 text-xl my-2"> Logo UMKM </h1>
                 <div class="w-3/12  px-2">
                     <img src= {{asset('storage/'. $umkm->logo)  }}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                </div>
+                <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                <div class="flex justify-start w-1/2">
+                    <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
+                        <div class="text-xl mr-2">
+                            <p>+62</p>
+                        </div>
+                        <div>
+                            <p class="text-xl ml-2"> {{$user->phone_number}} </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
