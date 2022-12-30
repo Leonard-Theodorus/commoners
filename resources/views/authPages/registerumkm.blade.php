@@ -1,7 +1,11 @@
 @extends('layouts.mainlayout')
 
 @section('content')
+<<<<<<< Updated upstream
 <div class="flex justify-center items-center min-h-full w-full mt-24">
+=======
+<div class="flex justify-center items-center min-h-full w-full mt-20">
+>>>>>>> Stashed changes
     <form action="/register/umkm" onsubmit="process(event)" method="post" class="flex flex-col w-2/4 space-y-4">
         <h1 class="text-sky-900 text-xl">Register Sebagai UMKM</h1>
         @csrf

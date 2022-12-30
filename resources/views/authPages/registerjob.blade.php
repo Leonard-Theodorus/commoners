@@ -1,7 +1,7 @@
 @extends('layouts.mainlayout')
 
 @section('content')
-<div class="flex justify-center items-center min-h-full w-full mt-24">
+<div class="flex justify-center items-center min-h-full w-full mt-20">
     <form action="/register/jobseeker" method="post" class="flex flex-col w-2/4 space-y-4">
         <h1 class="text-sky-900 text-xl">Register Sebagai Pelamar</h1>
         @csrf
