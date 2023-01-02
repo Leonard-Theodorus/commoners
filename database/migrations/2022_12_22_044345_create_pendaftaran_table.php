@@ -17,9 +17,9 @@ class CreatePendaftaranTable extends Migration
             $table->id();
             $table->foreignId('id_user')->constrained('users','id');
             $table->foreignId('id_iklan')->constrained('iklan','id');
-            $table->string('portfolio_link');
+            $table->string('portfolio_link')->default(null)->nullable();
             $table->string('proposal_date');
-            $table->boolean('is_accepted');
+            $table->boolean('is_accepted')->default(null)->nullable();
             $table->timestamps();
         });
     }

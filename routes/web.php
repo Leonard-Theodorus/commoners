@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,9 @@ Route::post('/search', [HomeController::class, 'search']);
 Route::post('/iklan/{id_iklan}', [HomeController::class, 'detail'])->name('detail');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'editprofile']);
-Route::post('/profile/download', [ProfileController::class, 'cv_download']);
+Route::post('/download', [ProfileController::class, 'cv_download'])->name('download');
+Route::get('/application', [JobController::class, 'display'])->name('application');
+Route::post('/application', [JobController::class, 'apply']);
+Route::get('/inbox', [JobController::class, 'inbox'])->name('inbox');
+Route::post('/accept', [JobController::class, 'accept'])->name('accept');
+Route::post('/reject', [JobController::class, 'reject'])->name('reject');

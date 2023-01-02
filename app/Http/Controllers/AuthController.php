@@ -18,9 +18,7 @@ class AuthController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email:dns', 'unique:users'],
             'password' => ['required', 'min:6', 'max:255'],
-            'repassword' => ['same:password'],
-            'phone_number' => $request->phone_num
-        ],
+            'repassword' => ['same:password']        ],
         [
             'repassword.same' => "Pasword must match"
         ]
@@ -31,6 +29,7 @@ class AuthController extends Controller
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => $validated['password'],
+                'phone_number' => $request->phone_num,
                 'is_umkm' => false,
                 'is_admin' => false
             ]

@@ -86,6 +86,6 @@ class ProfileController extends Controller
     }
     public function cv_download(){
 
-        return Storage::download(request()->img_url);
+        return Storage::download(request()->cv_url);
     }
 }

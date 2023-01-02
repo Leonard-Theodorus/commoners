@@ -1,15 +1,15 @@
 <nav class="bg-sky-800 px-12 py-1 top-0 w-full flex items-center justify-evenly">
     <div class="flex space x-4 p-1 ">
-        <img src="" alt="Logo">
+        <a href="{{route('home')}}"> <img src="" alt="Logo"></a>
         <a href= "#" class="text-white hover:font-bold" aria-current="page">About us</a>
     </div>
     @auth
         <div class="space x-4 p-1 flex items-center ">
+            <a href="{{route('inbox')}}" class="text-white hover:font-bold">Inbox UMKM</a>
             @can('umkm')
-                <a href="#" class="text-white hover:font-bold">Inbox UMKM</a>
             @endcan
             @cannot('umkm')
-                <a href="#" class="ml-2 text-white hover:font-bold">Inbox Jobseeker</a>
+                <a href="{{route('application')}}" class="ml-2 text-white hover:font-bold"> Applications </a>
             @endcannot
             <li class="ml-2 relative inline-block">
                 <button id="dropdownBtn" onclick="myFunction1()" class="py-1 px-2 border rounded-md text-white hover:font-bold active:font-bold flex items-center" href="#" role="button" data-bs-toggle="dropdown"
@@ -30,17 +30,10 @@
                         <li><a class="px-4 py-2 block font-semibold text-gray-700 hover:bg-sky-700 hover:text-white" href="#">Manage Bidang</a></li>
                     </ul>
                 </li>
-<<<<<<< Updated upstream
-                <form action= "#" class="flex space-x-4" role="search" method="post">
-                    @csrf
-                    <input class="w-96 h-8 rounded-md pl-4" name="search_keyword" type="search" placeholder="Search nama UMKM (Admin)" aria-label="Search">
-                    <button class="py-1 px-2 border border-green-800 rounded-md hover:font-bold text-white" type="submit">Search</button>
-=======
                 <form action= "#" class="flex space-x-3" role="search" method="post">
                     @csrf
                     <input class="w-96 h-8 rounded-md pl-3" name="search_keyword" type="search" placeholder="Search nama UMKM (Admin)" aria-label="Search">
                     <button class="py-1 px-1 border border-green-800 rounded-md hover:font-bold text-white" type="submit">Search</button>
->>>>>>> Stashed changes
                 </form>
             @endcannot
         </div>

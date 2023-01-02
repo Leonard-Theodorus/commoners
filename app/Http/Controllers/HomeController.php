@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Iklan;
 use App\Models\Kategori;
+use App\Models\Pendaftaran;
 use App\Models\Umkm;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -69,7 +69,13 @@ class HomeController extends Controller
         $iklan->bidang = $bidang->nama_kategori;
         $jobdesc = $iklan->jobdesc;
         $jobdesc_list = explode(".", $jobdesc);
-        return view('guestPages.detail', ['iklan' => $iklan, 'jobdesc' => $jobdesc_list]);
+        $app = Pendaftaran::where([
+            ['id_iklan' , '=', request()->id_iklan],
+            ['id_user', '=', auth()->user()->id]
+        ])->first();
+        $applied = ($app) ? true : false;
+        return view('guestPages.detail', ['iklan' => $iklan, 'jobdesc' => $jobdesc_list,
+    'applied' => $applied]);
     }
     public function profile(){
         $is_umkm = auth()->user()->is_umkm;

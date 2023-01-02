@@ -68,10 +68,12 @@
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> File CV </h1>
                 <div class="border-2 rounded p-4 w-full my-2">
-                <form method="post" action="{{url('/profile/download')}}">
+                <form method="post" action="{{route('download')}}">
                         @csrf
-                        <input type="hidden" name="img_url" value=" {{$user->cv_file}} ">
-                        <button class="rounded bg-stone-300 w-full"> Download CV</button>
+                        <input type="hidden" name="cv_url" value=" {{$user->cv_file}} ">
+                        <button class="rounded bg-stone-300 w-full" @if ($user->cv_file == null)
+                            disabled
+                        @endif> Download CV</button>
 
                     </form>
                 </div>
@@ -88,7 +90,7 @@
                               <label for="thumbnail" class="cursor-pointer">
                                 Upload New Profile Picture
                               </label>
-                              <input type="file" name="thumbnail" id="thumbnail" class="hidden form-control @error('thumbnail') is-invalid @enderror" @change="updatePreview()">
+                              <input value=" {{$user->photo}} " type="file" name="thumbnail" id="thumbnail" class="hidden form-control @error('thumbnail') is-invalid @enderror" @change="updatePreview()">
                               @error('thumbnail')
                                 <div class="invalid-feedback text-red-500">
                                     {{$message}}
@@ -160,9 +162,8 @@
                         <div class="text-xl mr-2">
                             <p>+62</p>
                         </div>
-                        <input type="tel" name="phone" id="phone" class="w-full rounded border-2">
-                        <div>
-                        </div>
+                        <input value=" {{$user->phone_number}} " type="tel" name="phone" id="phone" class="w-full rounded border-2">
+
                     </div>
 
                     <h1 class="text-sky-900 text-xl my-2"> Deskripsi Singkat </h1>
@@ -204,15 +205,15 @@
                     <img src= {{asset('storage/'. $user->photo)  }}  alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Gender </h1>
-                <div class="flex justify-evenly w-1/4">
+                <div class="flex justify-evenly w-28">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
+                        <input disabled class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
                         checked
                         @endif>
                       <label class="form-check-label inline-block text-gray-800" for="male">Male</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="female" value="Female" @if ($user->gender == 'Female')
+                      <input disabled class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="female" value="Female" @if ($user->gender == 'Female')
                       checked
 
                       @endif>
@@ -220,13 +221,13 @@
                     </div>
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Date of Birth </h1>
-                <div class="flex justify-start w-1/2">
-                    <div class="border-2 rounded p-4 w-full my-2">
+                <div class="flex justify-start w-32">
+                    <div class="border-2 rounded p-2 w-full my-2">
                         <p class="text-xl"> {{$user->dob}} </p>
                     </div>
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
-                <div class="flex justify-start w-1/2">
+                <div class="flex justify-start w-48">
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">
                             <p>+62</p>

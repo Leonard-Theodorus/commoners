@@ -2,42 +2,25 @@
 
 @section('content')
     <div class="flex w-full bg-slate-800 items-center justify-center">
-<<<<<<< Updated upstream
-        <div class="flex items-center mt-4">
-=======
         <div class="flex items-center mt-3">
->>>>>>> Stashed changes
             <h2 class="text-white font-sans text-3xl">
                 Jelajahi UMKM yang cocok untukmu!
             </h2>
         </div>
     </div>
-<<<<<<< Updated upstream
-    <div class="flex w-full bg-slate-800 items-center justify-evenly">
-        <div class="flex items-center mt-5">
-            <form action= "/search" class="flex space-x-4" role="search" method="post">
-                @csrf
-                <input class="w-96 h-8 rounded-md pl-4" name="search_keyword" type="search" placeholder="Cari Lowongan Kerja" aria-label="Search">
-=======
     <div class="flex h-20 w-full bg-slate-800 items-center justify-evenly">
         <div class="flex items-center mt-3">
             <form action= "/search" class="flex space-x-4" role="search" method="post">
                 @csrf
                 <input class="w-80 h-8 rounded-md pl-4" name="search_keyword" type="search" placeholder="Cari Lowongan Kerja" aria-label="Search">
->>>>>>> Stashed changes
                 <select class="w-80 h-8 pl-2 rounded  type="text" name="search_category"  value="{{old ('search_category')}}">
                     <option value="" selected="true" disabled="disabled">Kategori Pekerjaan</option>
                     @foreach ($categories as $cat )
                         <option value= {{$cat->id}}> {{$cat->nama_kategori}} </option>
                     @endforeach
                 </select>
-<<<<<<< Updated upstream
-                <input class="w-80 h-8 rounded-md pl-4" name="search_kota" type="search" placeholder="Kota" aria-label="Search">
-                <select class="w-80 h-8 pl-2 rounded  type="text" name="search_duration"  value="">
-=======
                 <input class="w-75 h-8 rounded-md pl-4" name="search_kota" type="search" placeholder="Kota" aria-label="Search">
                 <select class="w-75 h-8 pl-2 rounded  type="text" name="search_duration"  value="">
->>>>>>> Stashed changes
                     <option value="" selected="true" disabled>Durasi Pekerjaan</option>
                     <option value="Part-time">Part-time</option>
                     <option value="Full-time">Full-time</option>
@@ -60,11 +43,7 @@
                             {{$i->shortdesc}}
                         </p>
                     </div>
-<<<<<<< Updated upstream
-                    <div class="flex  px-6 pt-4 pb-2">
-=======
                     <div class="flex px-6 pt-4 pb-2">
->>>>>>> Stashed changes
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{$i->kota_lokasi}}</span>
                     <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> {{$i->bidang}} </span>
                     </div>
