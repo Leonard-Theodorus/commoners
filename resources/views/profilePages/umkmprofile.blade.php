@@ -62,6 +62,10 @@
                 <div class="border-2 rounded p-4 w-full my-2">
                     <p class="text-xl"> {{$user->email}} </p>
                 </div>
+                <form action=" {{route('pass_view')}} " method="get">
+                    @csrf
+                    <button class="border-2 rounded p-2 bg-yellow-300 w-full my-2">Change Password</button>
+                </form>
                 <h1 class="text-sky-900 text-xl my-2"> Kategori UMKM </h1>
                 <div class="border-2 rounded p-4 w-full my-2">
                     <p class="text-xl"> {{$umkm->kategori}} </p>
