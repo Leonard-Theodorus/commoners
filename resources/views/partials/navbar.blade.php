@@ -5,14 +5,14 @@
     </div>
     @auth
         <div class="space x-4 p-1 flex items-center ">
-            <a href="{{route('inbox')}}" class="text-white hover:font-bold">Inbox UMKM</a>
+            <a href="{{route('inbox')}}" class="text-white hover:font-bold duration-200">Inbox UMKM</a>
             @can('umkm')
             @endcan
             @cannot('umkm')
-                <a href="{{route('application')}}" class="ml-2 text-white hover:font-bold"> Applications </a>
+                <a href="{{route('application')}}" class="ml-2 text-white hover:font-bold duration-200"> Applications </a>
             @endcannot
             <li class="ml-2 relative inline-block">
-                <button id="dropdownBtn" onclick="myFunction1()" class="py-1 px-2 border rounded-md text-white hover:font-bold active:font-bold flex items-center" href="#" role="button" data-bs-toggle="dropdown"
+                <button id="dropdownBtn" onclick="myFunction1()" class="py-1 px-2 border rounded-md text-white hover:font-bold duration-200 active:font-bold flex items-center" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"><span class="mr-2">Manage Iklan (UMKM)</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg></button>
                 <ul id="myDropdown1" class="w-48 absolute flex flex-col bg-white rounded shadow-md mt-2 hidden">
@@ -22,7 +22,7 @@
             </li>
             @cannot('umkm')
                 <li class="ml-2 relative inline-block">
-                    <button id="dropdownBtn" onclick="myFunction2()" class="py-1 px-2 border rounded-md text-white hover:font-bold active:font-bold flex items-center" href="#" role="button" data-bs-toggle="dropdown"
+                    <button id="dropdownBtn" onclick="myFunction2()" class="py-1 px-2 border rounded-md text-white hover:font-bold duration-200 active:font-bold flex items-center" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><span class="mr-2">Manage Iklan (Admin)</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg></button>
                     <ul id="myDropdown2" class="w-48 absolute flex flex-col bg-white rounded shadow-md mt-2 hidden">
@@ -33,14 +33,14 @@
                 <form action= "#" class="flex space-x-3" role="search" method="post">
                     @csrf
                     <input class="w-96 h-8 rounded-md pl-3" name="search_keyword" type="search" placeholder="Search nama UMKM (Admin)" aria-label="Search">
-                    <button class="py-1 px-1 border border-green-800 rounded-md hover:font-bold text-white" type="submit">Search</button>
+                    <button class="py-1 px-1 border border-green-800 rounded-md hover:font-bold duration-200 text-white" type="submit">Search</button>
                 </form>
             @endcannot
         </div>
-        <button class="py-1 rounded-md hover:font-bold"> <a href= {{route('profile')}} class="text-white"> {{auth()->user()->name}} </a> </button>
+        <button class="py-1 rounded-md hover:font-bold duration-200"> <a href= {{route('profile')}} class="text-white"> {{auth()->user()->name}} </a> </button>
         <form action={{route('logout')}} method="post">
             @csrf
-            <button type="submit" class="text-white pl-3 hover:font-bold">Logout</button>
+            <button type="submit" class="text-white pl-3 hover:font-bold duration-200">Logout</button>
         </form>
         @else
         <div class="space-x-4 p-3  place-self-end ">

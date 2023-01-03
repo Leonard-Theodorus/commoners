@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Umkm;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -83,6 +85,30 @@ class ProfileController extends Controller
 
         }
         return redirect(route('profile'))->with('update_success', 'Profile Sucessfully Updated!');
+    }
+    public function pass_view(){
+        return view('profilePages.changepassword');
+    }
+    public function change_pass(Request $request){
+        $pass = auth()->user()->getAuthPassword();
+        $request->request->add(['old_pass' => $pass]);
+        $validator = Validator::make(request()->all(), [
+            'curr_password' => ['same:old_pass'],
+            'new_password' => ['required', 'min:6', 'max:255'],
+            're_new_password' => ['same:new_password']
+        ], [
+            'curr_password.same' => "Password Incorrect!",
+            're_new_password.same' => "Password Does Not Match!"
+        ]);
+        if($validator->fails()){
+            return redirect(route('pass_view'))->withErrors($validator)
+            ->with('change_pass_error', 'Failed to Update Password');
+        }
+        $user = User::where('id', auth()->user()->id);
+        $user->password(Hash::make(request()->new_password));
+        $user->save();
+        return redirect(route('pass_view'))->with('change_pass_success','Password Successfuly Changed!');
+
     }
     public function cv_download(){
 

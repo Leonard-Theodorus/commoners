@@ -29,6 +29,8 @@ Route::post('/search', [HomeController::class, 'search']);
 Route::post('/iklan/{id_iklan}', [HomeController::class, 'detail'])->name('detail');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'editprofile']);
+Route::get('/editpassword', [ProfileController::class, 'pass_view'])->name('pass_view');
+Route::post('/changepassword', [ProfileController::class, 'change_pass'])->name('change_pass');
 Route::post('/download', [ProfileController::class, 'cv_download'])->name('download');
 Route::get('/application', [JobController::class, 'display'])->name('application');
 Route::post('/application', [JobController::class, 'apply']);
