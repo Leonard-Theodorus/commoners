@@ -16,7 +16,7 @@
                 aria-expanded="false"><span class="mr-2">Manage Iklan (UMKM)</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg></button>
                 <ul id="myDropdown1" class="w-48 absolute flex flex-col bg-white rounded shadow-md mt-2 hidden">
-                    <li><a class="px-4 py-2 block font-semibold text-gray-700 hover:bg-sky-700 hover:text-white" href="#">Lihat Iklan</a></li>
+                    <li><a class="px-4 py-2 block font-semibold text-gray-700 hover:bg-sky-700 hover:text-white" href=" {{route('viewiklan')}} ">Lihat Iklan</a></li>
                     <li><a class="px-4 py-2 block font-semibold text-gray-700 hover:bg-sky-700 hover:text-white" href="#">Buat Iklan Baru</a></li>
                 </ul>
             </li>

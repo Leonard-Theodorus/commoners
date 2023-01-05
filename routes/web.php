@@ -37,3 +37,4 @@ Route::post('/application', [JobController::class, 'apply']);
 Route::get('/inbox', [JobController::class, 'inbox'])->name('inbox');
 Route::post('/accept', [JobController::class, 'accept'])->name('accept');
 Route::post('/reject', [JobController::class, 'reject'])->name('reject');
+Route::get('/viewiklan', [HomeController::class, 'viewiklan'])->name('viewiklan');

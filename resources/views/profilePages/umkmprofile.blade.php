@@ -162,7 +162,13 @@
             <div id="dis-3" class="flex-col">
                 <h1 class="text-sky-900 text-xl my-2"> Logo UMKM </h1>
                 <div class="w-3/12  px-2">
-                    <img src= {{asset('storage/'. $umkm->logo)  }}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                    @if (str_starts_with($umkm->logo, 'https'))
+                        <img src= {{$umkm->logo}}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+
+                        @else
+                        <img src= {{asset('storage/'. $umkm->logo)  }}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+
+                    @endif
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
                 <div class="flex justify-start w-1/2">

@@ -35,7 +35,11 @@
             <form action= {{route('detail', ['id_iklan' => $i->id])}} method="post" class="max-w-sm rounded overflow-hidden shadow-lg mx-4">
                 @csrf
                 <button type="submit" class="h-full">
-                    <img class="w-full" src= "{{$i->logo}} " alt="Banner">
+                    @if (str_starts_with($i->logo, 'https'))
+                        <img class="w-full" src= "{{$i->logo}} " alt="Banner">
+                    @else
+                        <img class="w-full" src= "{{asset('storage/'. $i->logo)}} " alt="Banner">
+                    @endif
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">{{$i->judul_iklan}}</div>
                         <div class="font-bold text-xl my-2">{{$i->umkm}}</div>
