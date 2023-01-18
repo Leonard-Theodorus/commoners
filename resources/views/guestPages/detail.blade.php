@@ -8,36 +8,32 @@
             @else
                 <img class="block w-full h-1/4 " src="{{ asset('storage/' . $iklan->banner) }}" alt="banner">
             @endif
-            <div class="flex-row px-5 py-2 mt-2 gray-800 border-2 rounded">
-                <div class="flex-row">
-                        <h2 class="font-bold text-4xl text-center"> {{ $iklan->umkm }} </h2>
-                        <h2 class="font-bold text-xl text-center"> {{ $iklan->judul_iklan }} </h2>
+            <div class="flex mt-2 gray-800 border-2 rounded">
+                <div class="flex-col">
+                    <img class="w-64 h-64" src={{ $iklan->logo }} alt="logo">
+                    <h2 class="font-bold text-2xl"> {{ $iklan->umkm }} </h2>
+                    <h2 class="font-bold text-2xl"> {{ $iklan->judul_iklan }} </h2>
+                </div>
+                <div class="px-6 py-4 flex-col justify-between">
+                    <div class="flex w-96">
+                        <p class="font-bold"> {{ $iklan->shortdesc }} </p>
                     </div>
-                <div class="flex p-3 mt-2 gray-800 border-2 rounded">
-
-                    <div class="flex-col p-1">
-                        <img class="w-64 h-64" src={{ $iklan->logo }} alt="logo">
-                    </div>
-                    <div class="px-5 py-1 flex-row-col justify-between">
-                        <div class="flex">
-                            <p class="font-medium"> {{ $iklan->shortdesc }} </p>
+                    <div class="flex-row justify-evenly">
+                        <div class="flex-col mt-4">
+                            <p class="font-bold text-xl">Lokasi: {{ $iklan->kota_lokasi }} </p>
+                            <p class="font-bold text-xl">Durasi: {{ $iklan->durasi }} </p>
                         </div>
-                        <div class="flex justify-evenly">
-                            <div class="flex-col mt-4">
-                                <p class="font-medium text-xl m-5">Lokasi: {{ $iklan->kota_lokasi }} </p>
-                                <p class="font-medium text-xl m-5">Durasi: {{ $iklan->durasi }} </p>
-                            </div>
-                            <div class="flex-col ">
-                                <p class="font-medium text-xl m-5">
+                        <div class="flex-col ">
+                            <p class="font-bold text-xl">
                                 @if ($iklan->gaji == 0)
                                     UMKM tidak menampilkan gaji
                                 @else
-                                    Gaji:Rp{{ $iklan->gaji }}
+                                    Gaji: {{ $iklan->gaji }}
                                 @endif
                             </p>
-                                <p class="font-medium text-xl m-5"> {{ $iklan->bidang }} </p>
-                            </div>
+                            <p class="font-bold text-xl"> {{ $iklan->bidang }} </p>
                         </div>
+                    </div>
 
                     <div class="flex mt-2 justify-center">
                         @if (!Auth::check())
@@ -129,13 +125,12 @@
                                                                     id="file_input" name="new_cv" type="file">
 
 
-                                                                    <div class="flex items-center border-2  rounded p-2 w-full mt-4">
+                                                                <div class="flex items-center border-2  rounded p-2 w-full mt-4">
 
-                                                                        <input type="text" name="port" id="port"
-                                                                            class="w-full rounded border-2"
-                                                                            placeholder="Additional Portfolio Link">
+                                                                    <input type="text" name="port" id="port"
+                                                                        class="w-full rounded border-2"
+                                                                        placeholder="Additional Portfolio Link">
 
-                                                                    </div>
                                                                 </div>
                                                         </div>
                                                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
@@ -149,7 +144,6 @@
                                                         </div>
                                                         </form>
 
-                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>

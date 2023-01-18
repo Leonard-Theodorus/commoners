@@ -26,7 +26,9 @@ class UmkmSeeder extends Seeder
             [
                 'user_id' => 2,
                 'short_desc' => 'Penjahit baju spesialis baju pernikahan',
-                'logo' => 'https://static.vecteezy.com/system/resources/previews/006/863/869/original/vintage-tailor-shop-logo-icon-symbol-textile-or-industrial-illustration-concept-free-vector.jpg',
+                'logo' => 'https://static.vecteezy.com/system/resources/previews/006/863/869/original/vintage
+                -tailor-shop-logo-icon-symbol-textile-or-industrial-
+                illustration-concept-free-vector.jpg',
                 'kategori_umkm' => 3
             ],
             [
