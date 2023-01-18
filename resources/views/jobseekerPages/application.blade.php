@@ -29,7 +29,12 @@
 
                 </div>
                 <div class="flex-row">
-                    <img class="w-24 object-contain shadow rounded-full  border-none" src=" {{asset('storage/'. $a->img) }} " alt="logo umkm">
+                    @if (str_starts_with($a->img, 'https'))
+                        <img class="w-24 object-contain shadow rounded-full  border-none" src=" {{ $a->img }} " alt="logo umkm">
+                        @else
+                        <img class="w-24 object-contain shadow rounded-full  border-none" src=" {{asset('storage/'. $a->img) }} " alt="logo umkm">
+
+                    @endif
                     <p class="text-m"> {{$a->umkm}} </p>
                 </div>
             </div>
