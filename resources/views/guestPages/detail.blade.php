@@ -10,7 +10,11 @@
             @endif
             <div class="flex mt-2 gray-800 border-2 rounded">
                 <div class="flex-col">
-                    <img class="w-64 h-64" src= "{{$iklan->logo}}" alt="logo">
+                    @if (str_starts_with($iklan->logo, 'https'))
+                        <img class="w-64 h-64" src= "{{$iklan->logo}}" alt="logo">
+                        @else
+                        <img class="w-64 h-64" src= "{{asset('storage/' . $iklan->logo)}}" alt="logo">
+                    @endif
                     <h2 class="font-bold text-2xl"> {{ $iklan->umkm }} </h2>
                     <h2 class="font-bold text-2xl"> {{ $iklan->judul_iklan }} </h2>
                 </div>
