@@ -30,8 +30,8 @@ class IklanController extends Controller
             ->with('create_error', 'Iklan Tidak Berhasil Dibuat!');
         }
         $new_iklan = new Iklan();
-        $umkm = Umkm::where('id', auth()->user()->id)->first();
-        $new_iklan->id_umkm = $umkm->id;
+        $umkm = Umkm::where('user_id', auth()->user()->id)->first()->id;
+        $new_iklan->id_umkm = $umkm;
         $new_iklan->kategori_iklan = request()->new_category;
         $new_iklan->judul_iklan = request()->new_judul;
         if(request()->file('thumbnail')){
