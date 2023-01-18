@@ -4,14 +4,9 @@
     </span>
     <ul class="flex flex-wrap items-center mt-3 text-sm text-black dark:text-slate-900 sm:mt-0">
         <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+            <a href=" {{route('about')}} " class="mr-4 hover:underline md:mr-6 ">About</a>
         </li>
-        <li>
-            <a href="idk bisa diganti ig" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-        </li>
-        <li>
-            <a href="Link ke Contact " class="hover:underline">Contact</a>
-        </li>
+
     </ul>
 </footer>
-{{-- footer fixed blocked content, tolong di fix kalau bisa, kalau ga footer ga di fix --}}
+

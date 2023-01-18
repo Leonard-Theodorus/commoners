@@ -5,11 +5,11 @@
         @foreach ($app as $a)
             <div class="flex justify-between rounded border-2 my-4 px-8 py-2 ">
                 <div class="flex-row items-center">
-                    <p class="text-m "> {{$a->judul_iklan}} </p>
+                    <p class="text-xl "> {{$a->judul_iklan}} </p>
                     <h1 class="text-sky-900 text-xl my-2"> Pelamar </h1>
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded px-2 w-full my-2">
                         <div class="text-xl mr-2">
-                            <p>Name</p>
+                            <p>Nama</p>
                         </div>
                         <div>
                             <p class="text-xl ml-2"> {{$a->nama_pelamar}} </p>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">
-                            <p>Contact Number</p>
+                            <p>Nomor Kontak</p>
                         </div>
                         <div class="text-xl mr-2">
                             <p>+62</p>
@@ -40,7 +40,7 @@
                             <input type="hidden" name="cv_url" value=" {{$a->cv_pelamar}} ">
                             <button class="rounded bg-stone-300 w-full" @if ($a->cv_pelamar == null)
                                 disabled
-                            @endif> Download CV</button>
+                            @endif> Download CV Pelamar</button>
                         </form>
                     </div>
                     @if ($a->portfolio_link != null)
@@ -53,14 +53,14 @@
                             </div>
                         </div>
                     @endif
-                    <p class="text-m">Applied at: {{$a->proposal_date}} </p>
+                    <p class="text-m">Tanggal Daftar: {{$a->proposal_date}} </p>
                 </div>
                 <div class="flex-row  ">
                     <div class="flex items-center h-full">
                         @if ($a->is_accepted == true)
                             <button class="w-full bg-gray-700 border-2 p-2 rounded text-white" disabled> Accepted </button>
-                            @elseif($a->is_accepted == false && $a->is_accepted != null)
-                            <button class="w-full bg-gray-700 border-2 p-2 rounded text-white" disabled> Rejected </button>
+                            @elseif($a->is_accepted === 0)
+                                <button class="w-full bg-gray-700 border-2 p-2 rounded text-white" disabled> Rejected </button>
                             @else
                             <form action="{{route('accept')}}" method="post" class="mx-2">
                                 @csrf

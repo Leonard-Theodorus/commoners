@@ -62,9 +62,9 @@
                 <div class="border-2 rounded p-4 w-full my-2">
                     <p class="text-xl"> {{$user->email}} </p>
                 </div>
-                <form action=" {{route('pass_view')}} " method="get">
+                <form action=" {{route('pass_view')}} " method="post">
                     @csrf
-                    <button class="border-2 rounded p-2 bg-yellow-300 w-full my-2">Change Password</button>
+                    <button class="border-2 rounded p-2 bg-yellow-300 w-full my-2">Ubah Password</button>
                 </form>
                 <h1 class="text-sky-900 text-xl my-2"> Kategori UMKM </h1>
                 <div class="border-2 rounded p-4 w-full my-2">
@@ -86,7 +86,7 @@
                           <div x-show="previewUrl == ''">
                             <p class="text-center text-bold">
                               <label for="thumbnail" class="cursor-pointer">
-                                Upload New Logo
+                                Upload Logo Baru
                               </label>
                               <input type="file" name="thumbnail" id="thumbnail" class="hidden form-control @error('thumbnail') is-invalid @enderror" @change="updatePreview()">
                               @error('thumbnail')
@@ -100,7 +100,7 @@
                           <div x-show="previewUrl !== ''">
                             <img :src="previewUrl" alt="" class="rounded">
                             <div class="">
-                              <button type="button" class="" @click="clearPreview()">Change Image</button>
+                              <button type="button" class="" @click="clearPreview()">Ganti Image</button>
                             </div>
                           </div>
                         </div>
@@ -131,14 +131,12 @@
 
                         @endforeach
                     </select>
-                    <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                    <h1 class="text-sky-900 text-xl my-2"> Nomor Telepon </h1>
                     <div class="flex items-center border-2  rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">
                             <p>+62</p>
                         </div>
-                        <input type="tel" name="phone" id="phone" class="w-full rounded border-2">
-                        <div>
-                        </div>
+                        <input type="tel" name="phone" id="phone" class="w-full rounded border-2" value=" {{$user->phone_number}} ">
                     </div>
                     <h1 class="text-sky-900 text-xl my-2"> Deskripsi Singkat </h1>
                     <input type="text" name="short_desc" class="w-full border-2 p-4 my-2 @error('short_desc')
@@ -170,7 +168,7 @@
 
                     @endif
                 </div>
-                <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                <h1 class="text-sky-900 text-xl my-2"> Nomor Telepon </h1>
                 <div class="flex justify-start w-1/2">
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">

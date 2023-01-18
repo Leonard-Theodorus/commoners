@@ -19,10 +19,16 @@ class ProfileController extends Controller
                 'thumbnail' => ['image'],
                 'cv' => ['mimetypes:application/pdf'],
                 'phone' => ['digits:10']
+            ], [
+                'email.email' => "Format email tidak valid!",
+                'short_desc.max' => "Input melebihi 255 karakter!",
+                'thumbnail.image' => "File harus berupa image!",
+                'cv.mimetypes' => 'File CV harus berupa pdf',
+                'phone.digits' => 'Nomor telepon tidak valid!'
             ]);
             if($validator->fails()){
                 return redirect(route('profile'))->withErrors($validator)->withInput()
-                ->with('update_error', 'Profile not updated, click the update button again for more detail!');
+                ->with('update_error', 'Update profile gagal, tekan tombol edit untuk penjelasan lebih detail!');
             }
             $user_id = request()->id;
             $new_name = request()->name;
@@ -56,10 +62,15 @@ class ProfileController extends Controller
                 'short_desc' => ['max:255'],
                 'thumbnail' => [ 'image'],
                 'phone' => ['digits:10']
+            ], [
+                'email.email' => "Format email tidak valid!",
+                'short_desc.max' => "Input melebihi 255 karakter!",
+                'thumbnail.image' => "File harus berupa image!",
+                'phone.digits' => 'Nomor telepon tidak valid!'
             ]);
             if($validator->fails()){
                 return redirect(route('profile'))->withErrors($validator)->withInput()
-                ->with('update_error', 'Profile not updated, click the edit button again for more detail!');
+                ->with('update_error', 'Update profile gagal, tekan tombol edit untuk penjelasan lebih detail!');
             }
             $user_id = request()->id;
             $new_name = request()->name;
@@ -84,7 +95,7 @@ class ProfileController extends Controller
             $umkm->save();
 
         }
-        return redirect(route('profile'))->with('update_success', 'Profile Sucessfully Updated!');
+        return redirect(route('profile'))->with('update_success', 'Update Profile Berhasil!');
     }
     public function pass_view(){
         return view('profilePages.changepassword');
@@ -97,17 +108,17 @@ class ProfileController extends Controller
             'new_password' => ['required', 'min:6', 'max:255'],
             're_new_password' => ['same:new_password']
         ], [
-            'curr_password.same' => "Password Incorrect!",
-            're_new_password.same' => "Password Does Not Match!"
+            'curr_password.same' => "Password salah!",
+            're_new_password.same' => "Password tidak sama!"
         ]);
         if($validator->fails()){
             return redirect(route('pass_view'))->withErrors($validator)
-            ->with('change_pass_error', 'Failed to Update Password');
+            ->with('change_pass_error', 'Update Password Gagal!');
         }
         $user = User::where('id', auth()->user()->id);
         $user->password(Hash::make(request()->new_password));
         $user->save();
-        return redirect(route('pass_view'))->with('change_pass_success','Password Successfuly Changed!');
+        return redirect(route('pass_view'))->with('change_pass_success','Update Password Berhasil');
 
     }
     public function cv_download(){

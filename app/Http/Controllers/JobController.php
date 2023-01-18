@@ -12,6 +12,9 @@ class JobController extends Controller
 {
     public function display(){
         $applications = Pendaftaran::where('id_user', auth()->user()->id)->get();
+        if(count($applications) == 0){
+            return view('miscPages.notfound', ['message' => "Belum ada lamaran pekerjaan!"]);
+        }
         foreach($applications as $a){
             $corr_iklan = Iklan::where('id', $a->id_iklan)->first();
             $corr_umkm = Umkm::where('id', $corr_iklan->id_umkm)->first();
@@ -46,6 +49,9 @@ class JobController extends Controller
         $iklan = Iklan::where('id_umkm', $id_umkm)->pluck('id')->toArray();
         $iklan = collect($iklan);
         $app = Pendaftaran::select("*")->whereIn('id_iklan', $iklan)->get();
+        if(empty($app)){
+            return view('miscPages.notfound', ['message' => "Belum ada yang melamar ke iklan Anda!"]);
+        }
         foreach($app as $a){
             $iklan_detail = Iklan::where('id', $a->id_iklan)->first();
             $jobseeker = User::where('id', $a->id_user)->first();

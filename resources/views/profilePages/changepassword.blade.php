@@ -30,34 +30,34 @@
 <div class="flex justify-center items-center min-h-full w-full mt-20">
     <form action="{{ route('change_pass') }}" method="post" class="flex flex-col w-1/4 space-y-4">
         @csrf
-        <h1 class="text-sky-900 text-xl">Current Password</h1>
+        <h1 class="text-sky-900 text-xl">Password Sekarang</h1>
         <input class="border p-4 @error('curr_password'))
             is-invalid
-        @enderror" type="password" name="curr_password" placeholder="Current Password">
+        @enderror" type="password" name="curr_password" placeholder="Password Sekarang">
         @error('curr_password')
         <div class="invalid-feedback text-red-500">
             {{$message}}
         </div>
         @enderror
-        <h1 class="text-sky-900 text-xl">Enter New Password</h1>
+        <h1 class="text-sky-900 text-xl">Password Baru</h1>
         <input class="border p-4 @error('new_password')
             is-invalid
-        @enderror" type="password" name="new_password" placeholder="New Password">
+        @enderror" type="password" name="new_password" placeholder="Password Baru">
         @error('new_password')
         <div class="invalid-feedback text-red-500">
             {{$message}}
         </div>
         @enderror
-        <h1 class="text-sky-900 text-xl">Confirm New Password</h1>
+        <h1 class="text-sky-900 text-xl">Konfirmasi Password Baru</h1>
         <input class="border p-4 @error('re_new_password')
             is-invalid
-        @enderror" type="password" name="re_new_password" placeholder="Re-enter New Password">
+        @enderror" type="password" name="re_new_password" placeholder="Konfirmasi Password Baru">
         @error('re_new_password')
         <div class="invalid-feedback text-red-500">
             {{$message}}
         </div>
         @enderror
-        <button class="w-full bg-yellow-300 rounded-md py-2 self-center w-full hover:font-bold duration-200" type="submit">Change Password</button>
+        <button class="w-full bg-yellow-300 rounded-md py-2 self-center w-full hover:font-bold duration-200" type="submit">Ubah Password</button>
     </form>
 </div>
 @endsection

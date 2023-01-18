@@ -18,9 +18,21 @@ class AuthController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'email' => ['required', 'email:dns', 'unique:users'],
             'password' => ['required', 'min:6', 'max:255'],
-            'repassword' => ['same:password']        ],
+            'repassword' => ['same:password'],
+            'phone_num' => ['digits:10']
+        ],
         [
-            'repassword.same' => "Pasword must match"
+            'name.required' => "Nama harus diisi!",
+            'name.min' => "Panjang nama diantara 3 hingga 255 karakter!",
+            'name.max' => "Panjang nama diantara 3 hingga 255 karakter!",
+            'email.required' => "Email harus diisi!",
+            'email.email' => "Format email tidak valid!",
+            'email.unique' => "Email ini sudah diambil!",
+            'password.required' => "Password harus diisi!",
+            'password.min' => "Panjang password diantara 6 hingga 255 karakter!",
+            'password.max' => "Panjang password diantara 6 hingga 255 karakter!",
+            'repassword.same' => "Password tidak sama!",
+            'phone_num.digits' => "Nomor telepon tidak valid!"
         ]
         );
         $validated['password'] = Hash::make($validated['password']);
@@ -34,7 +46,7 @@ class AuthController extends Controller
                 'is_admin' => false
             ]
         ]);
-        return redirect(route('login'))->with('success', 'Sign-up sucessful! Please login');
+        return redirect(route('login'))->with('success', 'Registrasi Berhasil! Silahkan login');
     }
     public function reg_umkm(){
         $categories = Kategori::all();
@@ -46,9 +58,20 @@ class AuthController extends Controller
             'email' => ['required', 'email:dns', 'unique:users'],
             'password' => ['required', 'min:6', 'max:255'],
             'repassword' => ['same:password'],
+            'phone_num' => ['digits:10']
         ],
         [
-            'repassword.same' => "Pasword must match"
+            'name.required' => "Nama UMKM harus diisi!",
+            'name.min' => "Panjang nama diantara 3 hingga 255 karakter!",
+            'name.max' => "Panjang nama diantara 3 hingga 255 karakter!",
+            'email.required' => "Email harus diisi!",
+            'email.email' => "Format email tidak valid!",
+            'email.unique' => "Email ini sudah diambil!",
+            'password.required' => "Password harus diisi!",
+            'password.min' => "Panjang password diantara 6 hingga 255 karakter!",
+            'password.max' => "Panjang password diantara 6 hingga 255 karakter!",
+            'repassword.same' => "Password tidak sama!",
+            'phone_num.digits' => "Nomor telepon tidak valid!"
         ]
         );
         $validated['password'] = Hash::make($validated['password']);
@@ -69,7 +92,7 @@ class AuthController extends Controller
                 'kategori_umkm' => $request->umkm_category
             ]
         ]);
-        return redirect(route('login'))->with('success', 'Sign-up sucessful! Please login');
+        return redirect(route('login'))->with('success', 'Registrasi Berhasil! Silahkan login');
     }
     public function login_page(){
         return view('authPages.login');
@@ -84,7 +107,7 @@ class AuthController extends Controller
             $req->session()->regenerate();
             return redirect()->intended(route('home'));
         }
-        return back()->with('loginError', 'Login Failed!');
+        return back()->with('loginError', 'Login gagal!');
     }
     public function logout(Request $request){
         Auth::logout();

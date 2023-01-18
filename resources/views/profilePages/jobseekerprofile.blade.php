@@ -54,7 +54,7 @@
     <div class="flex-col">
         <div  class="flex justify-evenly min-h-full w-full mt-24 bg-gray-100 ">
             <div id="cnt1" class="flex-col w-2/4  ">
-                <h1 class="text-sky-900 text-xl my-2"> Username </h1>
+                <h1 class="text-sky-900 text-xl my-2"> Nama </h1>
                 <div class="border-2 rounded p-4 w-full my-2">
                     <p class="text-xl"> {{$user->name}} </p>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
                 <form action=" {{route('pass_view')}} " method="get">
                     @csrf
-                    <button class="border-2 rounded p-2 bg-yellow-300 w-full my-2">Change Password</button>
+                    <button class="border-2 rounded p-2 bg-yellow-300 w-full my-2">Ubah Password</button>
                 </form>
                 <h1 class="text-sky-900 text-xl my-2"> Deskripsi Singkat </h1>
                 <div class="border-2 rounded p-4 w-full my-2">
@@ -75,9 +75,16 @@
                 <form method="post" action="{{route('download')}}">
                         @csrf
                         <input type="hidden" name="cv_url" value=" {{$user->cv_file}} ">
-                        <button class="rounded bg-stone-300 w-full" @if ($user->cv_file == null)
+                        <button class="rounded @if ($user->cv_file == null)
+                            bg-red-500 text-white
+                        @endif bg-stone-300 w-full" @if ($user->cv_file == null)
                             disabled
-                        @endif> Download CV</button>
+                        @endif>
+                        @if ($user->cv_file == null)
+                            Belum ada CV
+                        @else
+                                Download CV
+                        @endif  </button>
 
                     </form>
                 </div>
@@ -92,7 +99,7 @@
                           <div x-show="previewUrl == ''">
                             <p class="text-center text-bold">
                               <label for="thumbnail" class="cursor-pointer">
-                                Upload New Profile Picture
+                                Upload Profile Picture Baru
                               </label>
                               <input value=" {{$user->photo}} " type="file" name="thumbnail" id="thumbnail" class="hidden form-control @error('thumbnail') is-invalid @enderror" @change="updatePreview()">
                               @error('thumbnail')
@@ -106,12 +113,12 @@
                           <div x-show="previewUrl !== ''">
                             <img :src="previewUrl" alt="" class="rounded">
                             <div class="">
-                              <button type="button" class="" @click="clearPreview()">Change Image</button>
+                              <button type="button" class="" @click="clearPreview()">Ganti Image</button>
                             </div>
                           </div>
                         </div>
                       </div>
-                    <h1 class="text-sky-900 text-xl my-2"> Username </h1>
+                    <h1 class="text-sky-900 text-xl my-2"> Nama </h1>
                     <input type="text" class="w-full border-2 p-4 my-2 @error('name')
                     is-invalid
                     @enderror" name="name" value = "{{$user->name}}" >
@@ -120,21 +127,21 @@
                         {{$message}}
                     </div>
                     @enderror
-                    <h1 class="text-sky-900 text-xl my-2"> Gender </h1>
+                    <h1 class="text-sky-900 text-xl my-2"> Jenis Kelamin </h1>
 
-                    <div class="flex justify-evenly w-1/4">
+                    <div class="flex justify-evenly w-52">
                         <div class="form-check form-check-inline">
                           <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
                               checked
                               @endif>
-                          <label class="form-check-label inline-block text-gray-800" for="male">Male</label>
+                          <label class="form-check-label inline-block text-gray-800" for="male">Laki-Laki</label>
                         </div>
                         <div class="form-check form-check-inline">
                           <input class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="female" value="Female" @if ($user->gender == 'Female')
                           checked
 
                           @endif>
-                          <label class="form-check-label inline-block text-gray-800" for="female">Female</label>
+                          <label class="form-check-label inline-block text-gray-800" for="female">Perempuan</label>
                         </div>
 
                       </div>
@@ -147,7 +154,7 @@
                         {{$message}}
                     </div>
                     @enderror
-                    <h1 class="text-sky-900 text-xl my-2"> Date Of Birth </h1>
+                    <h1 class="text-sky-900 text-xl my-2"> Tanggal Lahir </h1>
                     <div class="relative">
                         <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                             <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
@@ -161,7 +168,7 @@
                         {{$message}}
                     </div>
                     @enderror
-                    <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                    <h1 class="text-sky-900 text-xl my-2"> Nomor Telepon </h1>
                     <div class="flex items-center border-2  rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">
                             <p>+62</p>
@@ -212,29 +219,29 @@
                         <img src= {{asset('storage/'. $user->photo)  }}  alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
                     @endif
                 </div>
-                <h1 class="text-sky-900 text-xl my-2"> Gender </h1>
-                <div class="flex justify-evenly w-28">
+                <h1 class="text-sky-900 text-xl my-2"> Jenis Kelamin </h1>
+                <div class="flex justify-evenly w-52">
                     <div class="form-check form-check-inline">
                         <input disabled class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="male" value="Male" @if ($user->gender == 'Male')
                         checked
                         @endif>
-                      <label class="form-check-label inline-block text-gray-800" for="male">Male</label>
+                      <label class="form-check-label inline-block text-gray-800" for="male">Laki-Laki</label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input disabled class="form-check-input form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="gender" id="female" value="Female" @if ($user->gender == 'Female')
                       checked
 
                       @endif>
-                      <label class="form-check-label inline-block text-gray-800" for="female">Female</label>
+                      <label class="form-check-label inline-block text-gray-800" for="female">Perempuan</label>
                     </div>
                 </div>
-                <h1 class="text-sky-900 text-xl my-2"> Date of Birth </h1>
+                <h1 class="text-sky-900 text-xl my-2"> Tanggal Lahir </h1>
                 <div class="flex justify-start w-32">
                     <div class="border-2 rounded p-2 w-full my-2">
                         <p class="text-xl"> {{$user->dob}} </p>
                     </div>
                 </div>
-                <h1 class="text-sky-900 text-xl my-2"> Phone Number </h1>
+                <h1 class="text-sky-900 text-xl my-2"> Nomor Telepon </h1>
                 <div class="flex justify-start w-48">
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">

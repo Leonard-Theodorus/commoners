@@ -24,6 +24,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Gate::define('admin', function(User $user){
+            return $user->is_admin;
+        });
         Gate::define('umkm', function(User $user){
             return $user->is_umkm;
         });

@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use App\Models\Pendaftaran;
 use App\Models\Umkm;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class HomeController extends Controller
 {
     public function home(){
         $categories = Kategori::all();
-        $iklan = Iklan::all();
+        $iklan = Iklan::paginate(3);
         foreach($iklan as $i){
             $id_umkm = $i->id_umkm;
             $id_bidang = $i->kategori_iklan;
@@ -30,8 +31,11 @@ class HomeController extends Controller
         }
         return view('guestPages.home', ['categories' => $categories, 'iklan' => $iklan]);
     }
+    public function about(){
+        return view('miscPages.about');
+    }
     public function search(){
-        $result = DB::table('iklan')->where('judul_iklan', 'LIKE', '%' . request()->search_keyword .'%')
+        $result = Iklan::where('judul_iklan', 'LIKE', '%' . request()->search_keyword .'%')
         ->when(request()->search_category, function($query){
             $query->where('kategori_iklan', request()->search_category);
         })
@@ -40,8 +44,13 @@ class HomeController extends Controller
         })
         ->when(request()->search_duration, function($query){
             $query->where('durasi', 'LIKE', request()->search_duration);
-        } )->get();
-        foreach($result as $r){
+        });
+        $tmp = $result;
+        $result_arr = $result->get();
+        if(count($result_arr) == 0){
+            return view('miscPages.notfound', ['message' => "Tidak ada iklan dengan filter pencarian tersebut!"]);
+        }
+        foreach($result_arr as $r){
             $id_bidang = $r->kategori_iklan;
             $coresponding = Kategori::where('id', $id_bidang)->first();
             $kategori = $coresponding->nama_kategori;
@@ -54,7 +63,8 @@ class HomeController extends Controller
             $r->umkm = $nama_umkm;
             $r->logo = $logo_umkm;
         }
-        return view('guestPages.search', ['res' => $result]);
+        $categories = Kategori::where('id', '!=', request()->search_category)->get();
+        return view('guestPages.search', ['res' => $result_arr, 'categories' => $categories]);
     }
     public function detail(){
         $iklan = request()->id_iklan;
@@ -98,10 +108,5 @@ class HomeController extends Controller
         else{
             return view('profilePages.jobseekerprofile', ['user' => auth()->user()]);
         }
-    }
-    public function viewiklan(){
-        $id_umkm = auth()->user()->id;
-        $iklan = Iklan::where('id_umkm', $id_umkm)->get();
-        return view('umkmPages.viewiklan', ['iklan' => $iklan]);
     }
 }

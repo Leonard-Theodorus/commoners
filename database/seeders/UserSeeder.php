@@ -36,6 +36,13 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('pass3'),
                 'is_umkm' => true,
                 'is_admin' => false
+            ],
+            [
+                'name' => 'Admin1',
+                'email' => 'admin@mail.com',
+                'password' => Hash::make('admin123'),
+                'is_umkm' => false,
+                'is_admin' => true
             ]
         ]);
     }
