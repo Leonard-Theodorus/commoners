@@ -19,8 +19,7 @@ class UmkmSeeder extends Seeder
             [
                 'user_id' => 1,
                 'short_desc' => 'Nasi uduk kampung',
-                'logo' => 'https://img.freepik.com/premium-vector/cute-funny-nasi-uduk-
-                traditional-rice-food-from-jakarta-indonesia_292879-141.jpg?w=2000',
+                'logo' => 'https://img.freepik.com/premium-vector/cute-funny-nasi-uduk-traditional-rice-food-from-jakarta-indonesia_292879-141.jpg?w=2000',
                 'kategori_umkm' => 2
             ],
             [
