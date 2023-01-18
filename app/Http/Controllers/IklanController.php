@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class IklanController extends Controller
 {
     public function viewiklan(){
-        $id_umkm = Umkm::where('id',auth()->user()->id)->first()->id;
+        $id_umkm = Umkm::where('user_id',auth()->user()->id)->first()->id;
         $iklan = Iklan::where('id_umkm', $id_umkm)->get();
         return view('umkmPages.viewiklan', ['iklan' => $iklan]);
     }
