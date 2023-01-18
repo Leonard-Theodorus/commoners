@@ -19,9 +19,9 @@
                     </div>
                     <div class="flex-row">
                         @if (str_starts_with($i->banner, 'https'))
-                            <img class="w-64 object-contain shadow   border-none" src=" {{$i->banner}} " alt="banner iklan">
+                            <img class="w-64 object-contain shadow   border-none" src="{{$i->banner}}" alt="banner iklan">
                             @else
-                            <img class="w-64 object-contain shadow   border-none" src=" {{asset('storage/'. $i->banner) }} " alt="banner iklan">
+                            <img class="w-64 object-contain shadow   border-none" src="{{asset('storage/'. $i->banner)}}" alt="banner iklan">
 
                         @endif
                     </div>

@@ -4,13 +4,13 @@
     <div class="flex justify-center mt-4">
         <div class="flex-col w-1/2">
             @if (str_starts_with($iklan->banner, 'https'))
-                <img class="block w-full h-1/4 " src="{{ $iklan->banner }}" alt="banner">
+                <img class="block w-full h-1/4 " src="{{$iklan->banner}}" alt="banner">
             @else
-                <img class="block w-full h-1/4 " src="{{ asset('storage/' . $iklan->banner) }}" alt="banner">
+                <img class="block w-full h-1/4 " src="{{asset('storage/' . $iklan->banner)}}" alt="banner">
             @endif
             <div class="flex mt-2 gray-800 border-2 rounded">
                 <div class="flex-col">
-                    <img class="w-64 h-64" src={{ $iklan->logo }} alt="logo">
+                    <img class="w-64 h-64" src= "{{$iklan->logo}}" alt="logo">
                     <h2 class="font-bold text-2xl"> {{ $iklan->umkm }} </h2>
                     <h2 class="font-bold text-2xl"> {{ $iklan->judul_iklan }} </h2>
                 </div>
