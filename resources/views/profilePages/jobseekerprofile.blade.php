@@ -214,9 +214,9 @@
                 <h1 class="text-sky-900 text-xl my-2"> Profile Picture </h1>
                 <div class="w-3/12  px-2">
                     @if (str_starts_with($user->photo, 'https'))
-                        <img src= {{ $user->photo  }}  alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                        <img src= "{{$user->photo}}"  alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
                         @else
-                        <img src= {{asset('storage/'. $user->photo)  }}  alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                        <img src= "{{asset('storage/'. $user->photo)}} " alt="profile picture" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
                     @endif
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Jenis Kelamin </h1>

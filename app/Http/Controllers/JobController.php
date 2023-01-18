@@ -45,7 +45,7 @@ class JobController extends Controller
         return redirect(route('application'));
     }
     public function inbox(){
-        $id_umkm = auth()->user()->id;
+        $id_umkm = Umkm::where('id',auth()->user()->id)->first()->id ;
         $iklan = Iklan::where('id_umkm', $id_umkm)->pluck('id')->toArray();
         $iklan = collect($iklan);
         $app = Pendaftaran::select("*")->whereIn('id_iklan', $iklan)->get();

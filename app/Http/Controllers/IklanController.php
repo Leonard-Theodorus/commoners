@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Iklan;
 use App\Models\Kategori;
+use App\Models\Umkm;
 use Illuminate\Support\Facades\Validator;
 
 class IklanController extends Controller
 {
     public function viewiklan(){
-        $id_umkm = auth()->user()->id;
+        $id_umkm = Umkm::where('id',auth()->user()->id)->first()->id;
         $iklan = Iklan::where('id_umkm', $id_umkm)->get();
         return view('umkmPages.viewiklan', ['iklan' => $iklan]);
     }
@@ -28,8 +29,9 @@ class IklanController extends Controller
             return redirect(route('newiklanpage'))->withErrors($validator)->withInput()
             ->with('create_error', 'Iklan Tidak Berhasil Dibuat!');
         }
-        $new_iklan = new Iklan;
-        $new_iklan->id_umkm = auth()->user()->id;
+        $new_iklan = new Iklan();
+        $umkm = Umkm::where('id', auth()->user()->id)->first();
+        $new_iklan->id_umkm = $umkm->id;
         $new_iklan->kategori_iklan = request()->new_category;
         $new_iklan->judul_iklan = request()->new_judul;
         if(request()->file('thumbnail')){

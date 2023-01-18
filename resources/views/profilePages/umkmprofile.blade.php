@@ -159,17 +159,17 @@
             </div>
             <div id="dis-3" class="flex-col">
                 <h1 class="text-sky-900 text-xl my-2"> Logo UMKM </h1>
-                <div class="w-3/12  px-2">
+                <div class="w-48  px-2">
                     @if (str_starts_with($umkm->logo, 'https'))
-                        <img src= {{$umkm->logo}}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                        <img src= "{{$umkm->logo}}"  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
 
                         @else
-                        <img src= {{asset('storage/'. $umkm->logo)  }}  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+                        <img src= "{{asset('storage/'. $umkm->logo)}}"  alt="logo" class="shadow rounded-full max-w-full h-auto align-middle border-none" />
 
                     @endif
                 </div>
                 <h1 class="text-sky-900 text-xl my-2"> Nomor Telepon </h1>
-                <div class="flex justify-start w-1/2">
+                <div class="flex justify-start w-48">
                     <div class="flex border-2 divide-x-2 divide-stone-500 rounded p-2 w-full my-2">
                         <div class="text-xl mr-2">
                             <p>+62</p>
