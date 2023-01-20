@@ -22,6 +22,7 @@ Commoners is the best platform to bridge small and medium enterprise and it's fu
 - Rename the .envexample file into .env
 - And rename the database name into "commoners"
 - Type in FILESYSTEM_DRIVER = public in the .env file you just renamed.
+- Type in "composer install" to download the dependencies required.
 - Migrate the database and it's seeders with "php artisan migrate:fresh --seed" command.
 - Finally, type in "php artisan serve" and commoners is ready to use.
 
